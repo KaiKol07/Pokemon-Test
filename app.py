@@ -333,7 +333,10 @@ if enviado:
             # PokéAPI
             url_api = f"https://pokeapi.co/api/v2/pokemon/{mejor_pokemon['id']}/"
             respuesta_api = requests.get(url_api).json()
-            imagen_url = respuesta_api['sprites']['other']['official-artwork']['front_default']
+            
+            # Extracción segura por si la PokéAPI falla o devuelve None
+            sprites = respuesta_api.get('sprites', {}).get('other', {}).get('official-artwork', {})
+            imagen_url = sprites.get('front_default')
             
             # Cálculos del informe
             nombres_display = ['Agresivo / Audaz', 'Calmado / Afable', 'Enérgico / Activo', 'Intelectual / Astuto', 'Misterioso / Oscuro']
@@ -346,25 +349,28 @@ if enviado:
             # --- RENDERIZADO DEL RESULTADO ---
             st.success("¡Análisis completado!")
             
-            # Usamos columnas para poner la imagen a la izquierda y el texto a la derecha
             col1, col2 = st.columns([1, 2])
             
             with col1:
-                st.image(imagen_url, use_column_width=True)
+                # Verificación de imagen y uso del parámetro actualizado
+                if imagen_url:
+                    st.image(imagen_url, use_container_width=True)
+                else:
+                    st.warning("Imagen del Pokémon temporalmente no disponible.")
                 
             with col2:
                 st.subheader(f"Tu alma gemela es {mejor_pokemon['nombre']}")
                 st.write(f"**Afinidad matemática:** {porcentaje_afinidad}%")
-                st.write(f"**Gimnasio:** Especialista de tipo **{tipo_ganador}**")
+                st.write(f"🏆 **Gimnasio:** Especialista de tipo **{tipo_ganador}**")
                 
             st.divider()
             
-            st.subheader("Análisis de tu Personalidad")
+            st.subheader("📊 Análisis de tu Personalidad")
             texto_analisis = f"El algoritmo ha determinado que tu rasgo dominante es ser **{rasgo_principal[0]}** ({rasgo_principal[1]:.1f}%). "
             if rasgo_secundario[1] > 15.0:
                 texto_analisis += f"Esto se combina con una fuerte tendencia hacia lo **{rasgo_secundario[0]}** ({rasgo_secundario[1]:.1f}%). "
             texto_analisis += f"Esta mezcla exacta en tu temperamento es lo que te vincula con {mejor_pokemon['nombre']}."
             st.write(texto_analisis)
             
-            st.write("**TU GIMNASIO:**")
+            st.write("⚔️ **TU GIMNASIO:**")
             st.write(f"Tus decisiones diarias y aficiones han sumado la mayoría de puntos de aptitud hacia el tipo **{tipo_ganador}**, definiendo tu estilo de liderazgo.")
