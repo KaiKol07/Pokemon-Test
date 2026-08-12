@@ -361,16 +361,16 @@ if enviado:
             with col2:
                 st.subheader(f"Tu alma gemela es {mejor_pokemon['nombre']}")
                 st.write(f"**Afinidad matemática:** {porcentaje_afinidad}%")
-                st.write(f"🏆 **Gimnasio:** Especialista de tipo **{tipo_ganador}**")
+                st.write(f"**Gimnasio:** Especialista de tipo **{tipo_ganador}**")
                 
             st.divider()
             
-            st.subheader("📊 Análisis de tu Personalidad")
+            st.subheader("📊 Análisis de tu Personalidad 📊")
             texto_analisis = f"El algoritmo ha determinado que tu rasgo dominante es ser **{rasgo_principal[0]}** ({rasgo_principal[1]:.1f}%). "
             if rasgo_secundario[1] > 15.0:
                 texto_analisis += f"Esto se combina con una fuerte tendencia hacia lo **{rasgo_secundario[0]}** ({rasgo_secundario[1]:.1f}%). "
             texto_analisis += f"Esta mezcla exacta en tu temperamento es lo que te vincula con {mejor_pokemon['nombre']}."
             st.write(texto_analisis)
             
-            st.write("⚔️ **TU GIMNASIO:**")
+            st.write("⚔️ **TU GIMNASIO:** ️⚔")
             st.write(f"Tus decisiones diarias y aficiones han sumado la mayoría de puntos de aptitud hacia el tipo **{tipo_ganador}**, definiendo tu estilo de liderazgo.")
