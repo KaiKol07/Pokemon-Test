@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import requests
-from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics.pairwise import euclidean_distances
 
 # --- 1. CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="Test Definitivo: Pokémon y Gimnasio", page_icon="🔮", layout="centered")
@@ -334,14 +334,36 @@ if enviado:
             if np.sum(perfil_personalidad) == 0:
                 perfil_personalidad += 0.1 # Seguro anti-ceros
                 
-            # 1. MATEMÁTICAS DEL POKÉMON (Coseno en 8D)
-            vector_usuario = perfil_personalidad.reshape(1, -1)
-            coincidencias = cosine_similarity(vector_usuario, df_pokemon[columnas_dimensiones].values)[0]
+            # --- BLINDAJE ANTI-CEROS PARA LA BASE DE DATOS ---
+            # Si algún Pokémon tiene todo a 0, le damos un 0.1 general para que exista en el mapa
+            df_pokemon[columnas_dimensiones] = df_pokemon[columnas_dimensiones].replace(0, 0.1)
+
+            # --- AJUSTE DE ESCALA (NORMALIZACIÓN) ---
+            # El usuario puede acumular 30-40 puntos, pero los Pokémon del JSON están del 0 al 10.
+            # Normalizamos el vector del usuario a una escala de 0 a 10 para que jueguen en la misma liga.
+            max_puntos_usuario = np.max(perfil_personalidad)
+            if max_puntos_usuario > 0:
+                vector_usuario_norm = (perfil_personalidad / max_puntos_usuario) * 10
+            else:
+                vector_usuario_norm = perfil_personalidad
+                
+            vector_usuario_norm = vector_usuario_norm.reshape(1, -1)
+
+            # 1. MATEMÁTICAS DEL POKÉMON (Distancia Euclidiana)
+            # Mide la distancia real entre los puntos. Cuanto MENOR sea la distancia, MEJOR es el match.
+            distancias = euclidean_distances(vector_usuario_norm, df_pokemon[columnas_dimensiones].values)[0]
             
-            # En lugar de coger solo el mejor, ordenamos y cogemos los 6 mejores índices
-            indices_top = np.argsort(coincidencias)[::-1][:6]
+            # Ordenamos de menor a mayor (los más cercanos van primero)
+            indices_top = np.argsort(distancias)[:6]
             mejor_pokemon = df_pokemon.iloc[indices_top[0]]
-            porcentaje_afinidad = round(coincidencias[indices_top[0]] * 100, 1)
+            
+            # Función para convertir la "distancia" geométrica en un porcentaje del 0 al 100%
+            def calcular_afinidad(dist):
+                # Restamos la distancia a 100 con un multiplicador de ajuste (4.5 suele dar resultados realistas)
+                afinidad = 100 - (dist * 4.5)
+                return round(max(0.1, afinidad), 1)
+
+            porcentaje_afinidad = calcular_afinidad(distancias[indices_top[0]])
             
             # 2. LÓGICA DE GIMNASIO DUAL
             tipos_ordenados = sorted(puntuacion_tipos.items(), key=lambda x: x[1], reverse=True)
