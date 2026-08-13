@@ -33,7 +33,7 @@ preguntas_test = [
         "A) Los meto en una bolsa y se los dejo delante de su puerta": {"perfil": [2, -1, 0, 1, 0, -1, 2, 1], "tipos": ["Veneno", "Siniestro"]},
         "B) Hablo con él tranquilo, seguro que tiene un mal momento": {"perfil": [-2, 3, 0, 0, 0, 3, 0, -1], "tipos": ["Hada", "Agua"]},
         "C) Hago una tabla de turnos y la pego en la nevera": {"perfil": [0, 0, 0, 4, 0, 1, -2, 0], "tipos": ["Acero", "Psíquico"]},
-        "D) Los friego yo, total ya está hecho el mal humor": {"perfil": [-3, 1, -1, 0, 0, 2, 0, -2], "tipos": ["Planta", "Normal"]}}},
+        "D) Los friego yo, total ya estoy de mal humor": {"perfil": [-3, 1, -1, 0, 0, 2, 0, -2], "tipos": ["Planta", "Normal"]}}},
     {"pregunta": "3. Te escriben a las 23:00 pidiéndote un favor urgente que no te apetece nada hacer.", "opciones": {
         "A) Digo que sí aunque por dentro esté maldiciendo un poco": {"perfil": [0, 2, 0, 0, 0, 4, 0, -1], "tipos": ["Normal", "Hada"]},
         "B) Pregunto primero qué gano yo antes de mover un dedo": {"perfil": [1, -1, 0, 2, 0, -2, 2, 1], "tipos": ["Siniestro", "Veneno"]},
@@ -94,7 +94,7 @@ preguntas_test = [
         "C) Le doy vueltas para entender por qué me lo ha contado a mí": {"perfil": [0, -1, 0, 3, 1, 0, 0, 0], "tipos": ["Psíquico", "Fantasma"]},
         "D) Lo guardo pero lo uso de as bajo la manga si hace falta": {"perfil": [1, -1, 0, 1, 0, -2, 2, 1], "tipos": ["Siniestro", "Veneno"]}}},
     {"pregunta": "14. Vas conduciendo o en bici y un coche te corta el paso de mala manera.", "opciones": {
-        "A) Toco el claxon y suelto un par de cosas por la ventana": {"perfil": [3, 0, 1, 0, 0, 0, 0, 0], "tipos": ["Fuego", "Eléctrico"]},
+        "A) Toco el pito y suelto un par de cosas por la ventana": {"perfil": [3, 0, 1, 0, 0, 0, 0, 0], "tipos": ["Fuego", "Eléctrico"]},
         "B) Freno, respiro y sigo, no vale la pena el disgusto": {"perfil": [-2, 0, -1, 1, 0, 0, -1, 0], "tipos": ["Agua", "Acero"]},
         "C) Me acuerdo de la matrícula por si acaso algún día coincide otra vez": {"perfil": [0, 0, 0, 2, 0, 0, 1, 2], "tipos": ["Dragón", "Siniestro"]},
         "D) Me da un vuelco el corazón y voy con miedo el resto del camino": {"perfil": [0, 0, 0, 0, 1, 0, 0, -2], "tipos": ["Hielo", "Agua"]}}},
@@ -233,7 +233,7 @@ preguntas_test = [
         "B) Le doy vueltas mentalmente sin decir nada durante días": {"perfil": [0, -1, 0, 2, 1, 0, 0, 1], "tipos": ["Psíquico", "Fantasma"]},
         "C) Sigo a lo mío, no todo el mundo tiene que quererme": {"perfil": [0, -2, 0, 0, 0, 0, -1, 2], "tipos": ["Roca", "Dragón"]},
         "D) Intento agradarle un poco más de lo normal, me incomoda esa idea": {"perfil": [-2, 2, 0, 0, 0, 1, 0, -2], "tipos": ["Hada", "Agua"]}}},
-    {"pregunta": "40. Última: si mañana te despertaras con una habilidad nueva pero al azar, ¿qué prefieres que te toque?", "opciones": {
+    {"pregunta": "40. Si mañana te despertaras con una habilidad nueva pero al azar, ¿qué prefieres que te toque?", "opciones": {
         "A) Una fuerza descomunal, aunque no supiera controlarla del todo": {"perfil": [4, 0, 1, -1, 0, 0, 1, 0], "tipos": ["Lucha", "Dragón"]},
         "B) Saber exactamente qué siente la gente a mi alrededor": {"perfil": [-1, 3, 0, 0, 1, 1, 0, 0], "tipos": ["Hada", "Psíquico"]},
         "C) Poder ver patrones y conexiones que nadie más ve": {"perfil": [0, -1, 0, 4, 1, 0, 0, 0], "tipos": ["Psíquico", "Acero"]},
