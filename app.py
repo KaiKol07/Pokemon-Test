@@ -365,16 +365,12 @@ if enviado:
 
             porcentaje_afinidad = calcular_afinidad(distancias[indices_top[0]])
             
-            # 2. LÓGICA DE GIMNASIO DUAL
+            # 2. LÓGICA DE GIMNASIO (Dominante y Secundario con Puntuación)
             tipos_ordenados = sorted(puntuacion_tipos.items(), key=lambda x: x[1], reverse=True)
             tipo_primario = tipos_ordenados[0][0]
-            tipo_secundario = tipos_ordenados[1][0]
             puntos_1 = tipos_ordenados[0][1]
+            tipo_secundario = tipos_ordenados[1][0]
             puntos_2 = tipos_ordenados[1][1]
-            
-            # Si el segundo tipo está a menos de 3 puntos del primero, es un Gimnasio Dual
-            es_dual = (puntos_1 - puntos_2) <= 3
-            texto_gimnasio = f"{tipo_primario} y {tipo_secundario}" if es_dual else tipo_primario
             
             # 3. EXTRACCIÓN DE POKÉAPI SEGURA
             url_api = f"https://pokeapi.co/api/v2/pokemon/{mejor_pokemon['id']}/"
@@ -403,17 +399,18 @@ if enviado:
             with col2:
                 st.subheader(f"Tu alma gemela es {mejor_pokemon['nombre']}")
                 st.write(f"**Afinidad estructural:** {porcentaje_afinidad}%")
-                if es_dual:
-                    st.write(f"**Líder de Gimnasio Dual:** {texto_gimnasio}")
-                else:
-                    st.write(f"**Líder de Gimnasio Especialista:** {texto_gimnasio}")
+                
+                # --- NUEVO RENDERIZADO DE GIMNASIO ---
+                st.write(f"🏆 **Tipo Dominante:** {tipo_primario} ({puntos_1} pts)")
+                st.write(f"🥈 **Tipo Secundario:** {tipo_secundario} ({puntos_2} pts)")
                 
                 st.write("---")
                 st.markdown("**Tus 5 Pokémon más cercanos:**")
-                # Bucle para mostrar del 2º al 6º clasificado
+                # Bucle para mostrar del 2º al 6º clasificado (CORREGIDO)
                 for i in indices_top[1:6]:
                     poke_cercano = df_pokemon.iloc[i]
-                    afinidad_cercana = round(coincidencias[i] * 100, 1)
+                    # Usamos la nueva función calcular_afinidad y la variable distancias
+                    afinidad_cercana = calcular_afinidad(distancias[i])
                     st.write(f"- **{poke_cercano['nombre']}** ({afinidad_cercana}%)")
                 
             st.divider()
