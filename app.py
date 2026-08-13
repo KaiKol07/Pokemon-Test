@@ -277,7 +277,7 @@ preguntas_test = [
         "B) Freno suavemente para no asustar al de atrás": {"perfil": [-1, 2, -1, 1, 0, 1, -1, 0], "tipos": ["Hada", "Agua"]},
         "C) Calculo mi velocidad de frenada y la distancia. Me detengo exacto": {"perfil": [0, -1, 0, 4, 0, 0, -1, 1], "tipos": ["Acero", "Psíquico"]},
         "D) Me lo salto, y si me pitan, pito yo más fuerte": {"perfil": [2, -2, 1, 0, 0, 0, 4, 1], "tipos": ["Siniestro", "Veneno"]}}},
-    {"pregunta": "48. Si encontraras una cartera en la calle con 500€...": {"opciones": {
+    {"pregunta": "48. Si encontraras una cartera en la calle con 500€...", "opciones": {
         "A) Busco al dueño para dársela cara a cara, por honor": {"perfil": [1, 1, 0, 0, 0, 4, 0, 2], "tipos": ["Lucha", "Acero"]},
         "B) La llevo a la policía, me daría cargo de conciencia quedármela": {"perfil": [-1, 3, 0, 1, 0, 2, -1, 0], "tipos": ["Normal", "Agua"]},
         "C) La dejo donde está, no quiero meterme en problemas legales ilógicos": {"perfil": [0, -2, 0, 3, 0, 0, -1, 0], "tipos": ["Psíquico", "Hielo"]},
