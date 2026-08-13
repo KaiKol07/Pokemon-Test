@@ -230,12 +230,12 @@ preguntas_test = [
         "D) Miento con una frialdad y maestría absolutas. Soy experto": {"perfil": [1, -2, 0, 2, 2, -1, 4, 0], "tipos": ["Siniestro", "Veneno"]}}},
     {"pregunta": "39. En tu grupo de amigos tienes fama de ser...", "opciones": {
         "A) El cañero, impulsivo o el que propone locuras": {"perfil": [3, 1, 3, -1, 0, 0, 2, 0], "tipos": ["Fuego", "Eléctrico"]},
-        "B) El "mamá/papá" del grupo, que cuida y abraza": {"perfil": [-2, 4, -1, 0, 0, 3, 0, 0], "tipos": ["Hada", "Planta"]},
+        "B) El 'mamá/papá' del grupo, que cuida y abraza": {"perfil": [-2, 4, -1, 0, 0, 3, 0, 0], "tipos": ["Hada", "Planta"]},
         "C) La wikipedia andante que sabe datos inútiles": {"perfil": [0, 0, 0, 4, 0, 0, -1, 1], "tipos": ["Psíquico", "Acero"]},
         "D) El misterioso, borde o del humor negro indescifrable": {"perfil": [1, -2, 0, 1, 3, 0, 3, 0], "tipos": ["Siniestro", "Fantasma"]}}},
     {"pregunta": "40. Haciendo una maleta para viajar...", "opciones": {
         "A) Meto las cosas a puñados cinco minutos antes de salir": {"perfil": [1, 0, 3, -2, 0, 0, 2, 0], "tipos": ["Volador", "Eléctrico"]},
-        "B) Llevo 5 jerseys "por si acaso" hace frío, muy previsor": {"perfil": [-1, 1, -1, 1, 0, 2, -1, 0], "tipos": ["Agua", "Normal"]},
+        "B) Llevo 5 jerseys 'por si acaso' hace frío, muy previsor": {"perfil": [-1, 1, -1, 1, 0, 2, -1, 0], "tipos": ["Agua", "Normal"]},
         "C) Doblo todo al estilo Marie Kondo. Espacio optimizado al 100%": {"perfil": [0, -1, 0, 4, 0, 0, -2, 1], "tipos": ["Acero", "Psíquico"]},
         "D) Llevo poca cosa, toda negra. Paso desapercibido": {"perfil": [0, -2, 0, 1, 2, 0, 1, 0], "tipos": ["Fantasma", "Siniestro"]}}},
 
