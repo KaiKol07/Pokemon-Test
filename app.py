@@ -337,9 +337,11 @@ if enviado:
             # 1. MATEMÁTICAS DEL POKÉMON (Coseno en 8D)
             vector_usuario = perfil_personalidad.reshape(1, -1)
             coincidencias = cosine_similarity(vector_usuario, df_pokemon[columnas_dimensiones].values)[0]
-            mejor_indice = np.argmax(coincidencias)
-            mejor_pokemon = df_pokemon.iloc[mejor_indice]
-            porcentaje_afinidad = round(coincidencias[mejor_indice] * 100, 1)
+            
+            # En lugar de coger solo el mejor, ordenamos y cogemos los 6 mejores índices
+            indices_top = np.argsort(coincidencias)[::-1][:6]
+            mejor_pokemon = df_pokemon.iloc[indices_top[0]]
+            porcentaje_afinidad = round(coincidencias[indices_top[0]] * 100, 1)
             
             # 2. LÓGICA DE GIMNASIO DUAL
             tipos_ordenados = sorted(puntuacion_tipos.items(), key=lambda x: x[1], reverse=True)
@@ -380,13 +382,21 @@ if enviado:
                 st.subheader(f"Tu alma gemela es {mejor_pokemon['nombre']}")
                 st.write(f"**Afinidad estructural:** {porcentaje_afinidad}%")
                 if es_dual:
-                    st.write(f"🏆 **Líder de Gimnasio Dual:** {texto_gimnasio}")
+                    st.write(f"**Líder de Gimnasio Dual:** {texto_gimnasio}")
                 else:
-                    st.write(f"🏆 **Líder de Gimnasio Especialista:** {texto_gimnasio}")
+                    st.write(f"**Líder de Gimnasio Especialista:** {texto_gimnasio}")
+                
+                st.write("---")
+                st.markdown("**Tus 5 Pokémon más cercanos:**")
+                # Bucle para mostrar del 2º al 6º clasificado
+                for i in indices_top[1:6]:
+                    poke_cercano = df_pokemon.iloc[i]
+                    afinidad_cercana = round(coincidencias[i] * 100, 1)
+                    st.write(f"- **{poke_cercano['nombre']}** ({afinidad_cercana}%)")
                 
             st.divider()
             
-            st.subheader("📊 Tu Hoja de Estadísticas (Base Stats)")
+            st.subheader("El Por qué de tu Resultado (Tus Stats)")
             
             # Mostramos el Top 3 de dimensiones para que la gente compare
             st.write(f"1. **{estadisticas[0][0]}** dominante ({estadisticas[0][1]:.1f}%)")
