@@ -337,7 +337,7 @@ with st.form("formulario_test"):
         # Para hacer la separación visual por temáticas sin que quede cutre
         if p["tema"] != tema_actual:
             tema_actual = p["tema"]
-            st.markdown(f"###Sección: {tema_actual.replace('_', ' ')}")
+            st.markdown(f"### Sección: {tema_actual.replace('_', ' ')}")
             
         st.markdown(f"**{idx + 1}. {p['pregunta']}**")
         opcion = st.radio(f"Opciones {idx}", list(p["opciones"].keys()), index=None, label_visibility="collapsed", key=f"radio_{idx}")
